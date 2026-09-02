@@ -1,8 +1,10 @@
 # Moodle Plugin Vibe Review
 
-A [Claude Code](https://claude.com/product/claude-code) skill that reviews a git diff or a set of files in a **Moodle plugin** against Moodle's own coding, security and API conventions — before you commit or open a pull request.
+An AI coding agent skill that reviews a git diff or a set of files in a **Moodle plugin** against Moodle's own coding, security and API conventions — before you commit or open a pull request.
 
 It's built for the "vibe coding" workflow: you don't have to write Moodle plugin code yourself to ship it responsibly. Clear requirements and a feature that works are not enough on their own — an explicit review gate, checked against Moodle's real API and security rules, is what turns AI-assisted development into something you can actually trust.
+
+It's a single markdown instruction file, so it works with whatever AI coding agent you use — natively as a [Claude Code](https://claude.com/product/claude-code) Skill, or pasted into any other agent's system prompt / rules file / custom instructions.
 
 ## What it checks
 
@@ -24,22 +26,29 @@ It's a fast, conversational **complement** to Moodle's official [`moodle-plugin-
 
 ## Install
 
-Clone this repo and symlink the skill folder into Claude Code's user-level skills directory:
+Clone this repo:
 
 ```bash
 git clone https://github.com/arnoutvree/moodle-plugin-vibe-review.git
+```
+
+**Claude Code:** symlink the skill folder into its user-level skills directory:
+
+```bash
 ln -s "$(pwd)/moodle-plugin-vibe-review/skill/moodle-plugin-vibe-review" ~/.claude/skills/moodle-plugin-vibe-review
 ```
 
+**Any other AI coding agent** (Cursor, Windsurf, Copilot, a custom agent, etc.): point it at [`skill/moodle-plugin-vibe-review/SKILL.md`](skill/moodle-plugin-vibe-review/SKILL.md) directly, or copy its contents into whatever instruction-file convention that agent uses (`AGENTS.md`, `.cursorrules`, a system prompt).
+
 ## Usage
 
-From inside a Moodle plugin's working directory, in Claude Code:
+From inside a Moodle plugin's working directory:
 
 ```
 review my changes
 ```
 
-or explicitly:
+In Claude Code you can also call it explicitly:
 
 ```
 /moodle-plugin-vibe-review
