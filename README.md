@@ -58,6 +58,11 @@ Point it at specific files instead of the current diff by naming them in your pr
 
 If the plugin has its own `README.md` / `CLAUDE.md` / `CONTRIBUTING.md` with coding standards, the skill reads those first and treats them as authoritative alongside the general Moodle conventions above.
 
+## Related
+
+- [`moodle-plugin-scaffold`](https://github.com/arnoutvree/moodle-plugin-scaffold) — sets up a new plugin project (CLAUDE.md context layer + code skeleton) for this skill to review changes against.
+- [`moodle-plugin-development`](https://github.com/arnoutvree/moodle-plugin-development) — the spec-driven workflow this skill's review step (Phase 5a) fits into.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
