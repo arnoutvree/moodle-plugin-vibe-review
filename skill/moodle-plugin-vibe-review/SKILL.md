@@ -63,6 +63,8 @@ This skill exists because a plugin owner who doesn't write the code themselves s
 
 **Sad-path check:** alongside functional correctness, explicitly check whether any new or changed automated test covers a failure path, not just the happy path — invalid input, a missing capability, non-existent data. A new validation, capability check or error-handling branch with no corresponding negative test is worth flagging.
 
+**AI test coverage (only if the diff touches AI/LLM/agent functionality):** beyond the sad-path check above, check whether the change includes at least one adversarial test scenario relevant to the feature — not just a happy-path test with well-behaved input. Depending on what the feature actually does: a prompt injection attempt (user-controlled input, or RAG-retrieved content, trying to override the system prompt), an out-of-scope or jailbreak-style input, an attempt to leak the system prompt or another user's data, or — for agentic code — an attempt to trigger a tool call outside its intended scope. Only flag the scenarios that actually apply to the feature (e.g. don't require a tool-misuse test for a plugin that doesn't call any tools).
+
 Per finding:
 - **Severity** — critical / warning / info
 - **File:line**
