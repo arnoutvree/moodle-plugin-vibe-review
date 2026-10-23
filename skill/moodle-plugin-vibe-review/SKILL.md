@@ -66,6 +66,8 @@ This skill exists because a plugin owner who doesn't write the code themselves s
 
 **AI test coverage (only if the diff touches AI/LLM/agent functionality):** beyond the sad-path check above, check whether the change includes at least one adversarial test scenario relevant to the feature — not just a happy-path test with well-behaved input. Depending on what the feature actually does: a prompt injection attempt (user-controlled input, or RAG-retrieved content, trying to override the system prompt), an out-of-scope or jailbreak-style input, an attempt to leak the system prompt or another user's data, or — for agentic code — an attempt to trigger a tool call outside its intended scope. Only flag the scenarios that actually apply to the feature (e.g. don't require a tool-misuse test for a plugin that doesn't call any tools).
 
+**Simplicity check:** also check the diff for needless complexity and report it as **warning** (if widespread or central to the change) or **info**: speculative abstractions (interfaces, factories, options or extension points nothing in the diff uses), constructs a colleague cannot follow at a glance (nested ternaries, dense method chains, clever tricks), error handling for scenarios that cannot occur, and new dependencies the change does not need. Moodle's own idiom always wins: a core convention is never a finding. Suggest the simpler variant with each finding.
+
 Per finding:
 - **Severity** — critical / warning / info
 - **File:line**
